@@ -29,8 +29,7 @@ export const terminalConfig: TerminalConfig = {
   links: {
     dashborad: "https://dashboard.wolf-homelab.com.br/",
     pobreflix: "https://pobreflix.wolf-homelab.com.br/",
-    arquivos: "https://documents.wolf-homelab.com.br/apps/dashboard/",
-    twitter: "https://twitter.com"
+    arquivos: "https://documents.wolf-homelab.com.br/apps/dashboard/"
   },
 
   commands: [
