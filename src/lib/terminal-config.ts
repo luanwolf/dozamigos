@@ -29,7 +29,8 @@ export const terminalConfig: TerminalConfig = {
   links: {
     dashboard: "https://dashboard.wolf-homelab.com.br/",
     pobreflix: "https://pobreflix.wolf-homelab.com.br/",
-    arquivos: "https://documents.wolf-homelab.com.br/apps/dashboard/"
+    arquivos: "https://documents.wolf-homelab.com.br/apps/dashboard/",
+    prompt: "https://github.com/luanwolf/PromptAuxiliar/releases/tag/Prompt-Auxiliar-1.4"
   },
 
   commands: [
