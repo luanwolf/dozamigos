@@ -27,7 +27,7 @@ export const terminalConfig: TerminalConfig = {
   welcomeMessage: "Bem-vindo ao terminal Dozamigos! Digite 'help' para ver os comandos disponíveis.",
   
   links: {
-    dashborad: "https://dashboard.wolf-homelab.com.br/",
+    dashboard: "https://dashboard.wolf-homelab.com.br/",
     pobreflix: "https://pobreflix.wolf-homelab.com.br/",
     arquivos: "https://documents.wolf-homelab.com.br/apps/dashboard/"
   },
