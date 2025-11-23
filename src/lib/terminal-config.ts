@@ -28,6 +28,7 @@ export const terminalConfig: TerminalConfig = {
   
   links: {
     pobreflix: "https://pobreflix.wolf-homelab.com.br/",
+    pobrefy: "https://pobrefy.wolf-homelab.com.br/",
     arquivos: "https://documentos.wolf-homelab.com.br/share/Tlb6ihYU",
     prompt: "https://github.com/luanwolf/PromptAuxiliar/releases/tag/Prompt-Auxiliar-1.4"
   },
