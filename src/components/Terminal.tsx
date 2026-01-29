@@ -225,7 +225,7 @@ const Terminal: React.FC = () => {
       </div>
 
       {/* Overlay gradient for depth */}
-      <div className="absolute inset-0 bg-gradient-to-t from-terminal-bg/20 to-transparent pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-t from-terminal-bg/0 to-transparent pointer-events-none" />
     </div>
   );
 };
