@@ -64,8 +64,8 @@ export const terminalConfig: TerminalConfig = {
       }
     },
     {
-      name: "vermelho",                  // ← palavra-chave principal que o usuário digita
-      aliases: ["sangue", "orchidaceae", "orquídeas", "espinhos", "aurora"],     // ← apelidos opcionais (facilita digitar variantes)
+      name: "sanguis",                  // ← palavra-chave principal que o usuário digita
+      aliases: ["orchidaceae", "orchid"],     // ← apelidos opcionais (facilita digitar variantes)
       description: "???", // ← aparece no 'help'
       action: async () => {
         // Abre o link em nova aba
