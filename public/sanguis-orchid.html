@@ -8,7 +8,7 @@
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&display=swap" rel="stylesheet">
   
   <style>
     * {
@@ -19,7 +19,7 @@
     
     body {
       background: linear-gradient(135deg, #4B0000, #8B0000, #4B0000);
-      color: #f5e6d3; /* creme claro para contraste */
+      color: #f5e6d3;
       font-family: 'Cinzel', serif;
       min-height: 100vh;
       display: flex;
@@ -28,6 +28,20 @@
       padding: 2rem;
       position: relative;
       overflow-x: hidden;
+    }
+    
+    /* Imagem como fundo sutil */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url('https://freerangestock.com/sample/98185/red-flower-illuminated-in-the-dark.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.12;
+      z-index: -1;
+      pointer-events: none;
     }
     
     /* Vinheta/overlay para atmosfera sombria */
@@ -54,10 +68,10 @@
     }
     
     h1 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Cinzel', serif;          /* mesma fonte do texto */
       font-size: 4.5rem;
       font-weight: 900;
-      color: #ff3333; /* vermelho sangue vivo para destaque */
+      color: #ff3333;
       text-shadow: 0 0 20px rgba(255, 51, 51, 0.8), 0 0 40px rgba(139, 0, 0, 0.6);
       margin-bottom: 1.5rem;
       letter-spacing: 0.15em;
@@ -77,42 +91,21 @@
       margin-bottom: 1.5rem;
     }
     
-    .ornament {
-      position: absolute;
-      opacity: 0.25;
-      filter: brightness(0.7) contrast(1.2);
-      pointer-events: none;
-    }
-    
-    .ornament-top {
-      top: -15%;
-      left: 5%;
-      width: 300px;
-      transform: rotate(-15deg);
-    }
-    
-    .ornament-bottom {
-      bottom: -20%;
-      right: 5%;
-      width: 350px;
-      transform: rotate(20deg);
+    b {
+      color: #ff6666;
+      font-weight: 700;
     }
     
     @media (max-width: 768px) {
       h1 { font-size: 3.2rem; }
       .content { font-size: 1.1rem; }
-      .ornament { width: 200px; opacity: 0.18; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Orquídeas/vermelhas escuras como decoração sutil -->
-  <img src="https://freerangestock.com/sample/98185/red-flower-illuminated-in-the-dark.jpg" alt="Orquídea vermelha sombria" class="ornament ornament-top">
-  <img src="https://p1.hippopx.com/preview/185/583/579/red-petal-flower-bloom.jpg" alt="Pétalas vermelhas escuras" class="ornament ornament-bottom">
-
   <div class="container">
-    <h1>O SANGUIS ORCHID</h1>
+    <h1>SANGUIS ORCHID</h1>
     
     <div class="content">
       <p>Existia uma cidade chamada Aurora, na Europa, pequena e de pessoas muito devotas ao cristianismo. Durante o século VII, a cidade foi visitada por um anjo, que já havia passado pela cidade antes. Esse anjo era chamado de <b>Serafim Vermelho.</b></p>
