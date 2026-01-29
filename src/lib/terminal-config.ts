@@ -64,8 +64,8 @@ export const terminalConfig: TerminalConfig = {
       }
     },
     {
-      name: "sanguis",                  // ← palavra-chave principal que o usuário digita
-      aliases: ["orchidaceae", "orchid"],     // ← apelidos opcionais (facilita digitar variantes)
+      name: "orchidaceae",                  // ← palavra-chave principal que o usuário digita
+      aliases: ["s̵̰͕͙͔͕͎̹̫̯̩̮̯̙̗͓͇̳̭̹͕͍̼̝̪̒̀̔̉̽̈́͊͌̾̏̽̋̒̅̽̀̑͗̎̍̋͌̿̃̾̿̍́̀̓̇̎͑̿̌͜͝ą̶̨̠̪̙̮͉̹͙͎̬̕n̶̢̢̗̙̠̣͇̙͔̭͖͓̻̣̟͚̦̯͎̻͔̺͔̙̄̉̊͆̔́̏̈̎̽̍̓͒́̓̿̈͂̍̀̕̚͜͝͝͝ġ̵̢̧̨̧̛̛̣̫̠͎̯͈̲̟̦̗̞̖͙̤͔͇̮̺̥̇̓͋̓̉̌͑̆̈́̾̏̊̓̒̈́͌̐̄̍́̍̀͒͐̽͘͝͝͝͠͝ụ̵̭͇̝̝͈̲̰͚̲̝̟͕͉̙̥̟̺̭̉̈́̍̄̑͐̂͂͑̊̊͂͑̌̎̿͗̋͗̅͊̒̆̐̓̒͊͗̓̏̅̈́̅̅̇̉̀̏͊͝ͅȩ̴̟̗̳̣̟͔̫̣̮͉͉͖̥̯̠̘̮̞̱̜͈̗̥̙̠̻͓̻̮̬̦̖̎͂͑̽͆̈́͑̑̓͊͐̒͛̐͒̏́̏̂̈́́͌̑͛̓̈͘͝͝͝͠ͅͅ"],     // ← apelidos opcionais (facilita digitar variantes)
       description: "???", // ← aparece no 'help'
       action: async () => {
         // Abre o link em nova aba
