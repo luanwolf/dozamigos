@@ -140,7 +140,7 @@ const Terminal: React.FC = () => {
         {showHeader && (
           <div className="mb-6">
             {/* Banner - Centralizado */}
-            <pre className="text-terminal-green terminal-glow mb-4 typewriter whitespace-pre-wrap text-center">
+            <pre className="text-terminal-green terminal-glow mb-4 whitespace-pre-wrap text-center">
               {terminalConfig.banner}
             </pre>
             
