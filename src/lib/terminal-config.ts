@@ -69,7 +69,7 @@ export const terminalConfig: TerminalConfig = {
       description: "???", // ← aparece no 'help'
       action: async () => {
         // Abre o link em nova aba
-        window.open("/aurora-escarlate.html", "_blank");
+        window.open("/sanguis-orchid.html", "_blank");
         
         // Retorna uma mensagem no terminal (obrigatório retornar string ou Promise<string>)
         return "Acessando a Aurora Escarlate...";
