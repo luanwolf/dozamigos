@@ -64,6 +64,18 @@ export const terminalConfig: TerminalConfig = {
       }
     },
     {
+      name: "vermelho",                  // ← palavra-chave principal que o usuário digita
+      aliases: ["sangue", "orchidaceae", "orquídeas", "aurora escarlate"],     // ← apelidos opcionais (facilita digitar variantes)
+      description: "???", // ← aparece no 'help'
+      action: async () => {
+        // Abre o link em nova aba
+        window.open("https://seu-portfolio.com", "_blank");
+        
+        // Retorna uma mensagem no terminal (obrigatório retornar string ou Promise<string>)
+        return "Acessando a Aurora Escarlate...";
+      },
+    },
+    {
       name: "open",
       description: "Abre um link em uma nova aba",
       aliases: ["go"],
