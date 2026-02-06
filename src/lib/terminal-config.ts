@@ -15,15 +15,16 @@ export interface TerminalConfig {
 
 export const terminalConfig: TerminalConfig = {
   banner: `
-                                                                      
-                                                                      
- ▄▄▄▄   ▄▄▄▄▄▄          ▄▄▄                  ▄                        
- █   ▀▄     █▀        ▄▀   ▀  ▄▄▄   ▄ ▄▄   ▄▄█▄▄   ▄▄▄    ▄ ▄▄        
- █    █   ▄█          █      █▀  █  █▀  █    █    █▀  █   █▀  ▀       
- █    █  ▄▀           █      █▀▀▀▀  █   █    █    █▀▀▀▀   █           
- █▄▄▄▀  ██▄▄▄▄         ▀▄▄▄▀ ▀█▄▄▀  █   █    ▀▄▄  ▀█▄▄▀   █           
-                                                                                                                            
-                                                                                                                                                                      
+8888888b. 8888888888P 
+888  "Y88b      d88P  
+888    888     d88P   
+888    888    d88P    
+888    888   d88P     
+888    888  d88P      
+888  .d88P d88P       
+8888888P" d8888888888 
+                      
+                                                                                                                                                                                           
 `,
   prompt: "dozamigos@visitante:~$",
   welcomeMessage: "Bem-vindo ao terminal Dozamigos! Digite 'help' para ver os comandos disponíveis.",
