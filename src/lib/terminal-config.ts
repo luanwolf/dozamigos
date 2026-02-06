@@ -15,11 +15,14 @@ export interface TerminalConfig {
 
 export const terminalConfig: TerminalConfig = {
   banner: `
-  ___ ____  ___ ___ _____ ___ 
- |   \_  / / __|_ _|_   _| __|
- | |) / /  \__ \| |  | | | _| 
- |___/___| |___/___| |_| |___|
-                                                                           
+  _____ ______   _____           _             
+ |  __ \___  /  / ____|         | |            
+ | |  | | / /  | |     ___ _ __ | |_ ___ _ __  
+ | |  | |/ /   | |    / _ \ '_ \| __/ _ \ '__| 
+ | |__| / /__  | |___|  __/ | | | ||  __/ |    
+ |_____/_____|  \_____\___|_| |_|\__\___|_|    
+                                               
+                                                                                                                          
 `,
   prompt: "dozamigos@visitante:~$",
   welcomeMessage: "Bem-vindo ao terminal Dozamigos! Digite 'help' para ver os comandos disponíveis.",
