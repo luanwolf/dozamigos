@@ -5,80 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sanguis Orchid</title>
   
-  <!-- Seus estilos originais (adicione aqui o que você já tinha, ou use inline abaixo) -->
+  <!-- Estilos básicos pra manter a vibe sombria (ajuste conforme o seu original) -->
   <style>
     body {
       margin: 0;
       padding: 0;
-      height: 100vh;
-      background: #0a0005; /* fundo escuro pra vibe */
+      min-height: 100vh;
+      background: #0a0005 url('seu-fundo-aqui.jpg') no-repeat center center fixed; /* adicione imagem de fundo se tiver */
+      background-size: cover;
       color: #c70039; /* vermelho sangue */
-      font-family: 'Courier New', Courier, monospace;
-      overflow: hidden;
-      cursor: default;
+      font-family: 'Georgia', serif; /* ou a fonte que você usava */
+      line-height: 1.6;
+      overflow-x: hidden;
     }
     .container {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      max-width: 90%;
+      max-width: 800px;
+      margin: 5rem auto;
+      padding: 2rem;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      box-shadow: 0 0 30px rgba(199, 0, 57, 0.3);
+      text-align: justify;
     }
     h1 {
+      text-align: center;
       font-size: 3.5rem;
       text-shadow: 0 0 20px #c70039;
-      margin: 0;
+      margin-bottom: 2rem;
     }
     p {
-      font-size: 1.4rem;
-      line-height: 1.6;
-      opacity: 0.9;
+      margin-bottom: 1.5rem;
+      font-size: 1.2rem;
     }
-    /* Adicione mais estilos da sua página original aqui */
+    strong {
+      color: #ff3366;
+    }
   </style>
 </head>
 <body>
 
-  <!-- Áudio de fundo -->
+  <!-- Áudio de fundo (o mesmo de antes, compatível com mobile/desktop) -->
   <audio id="bg-music" loop preload="auto" muted>
     <source src="/audio/sanguis-background.mp3" type="audio/mpeg">
-    <!-- Se tiver .ogg também, adicione: -->
-    <!-- <source src="/audio/sanguis-background.ogg" type="audio/ogg"> -->
     Seu navegador não suporta áudio.
   </audio>
 
-  <!-- Conteúdo da sua página (substitua pelo seu texto/imagens reais) -->
+  <!-- Seu textinho da história completo -->
   <div class="container">
     <h1>Sanguis Orchid</h1>
-    <p>
-      Nas veias da noite, a orquídea sangra devagar...<br>
-      Pétalas de rubi caem como gotas quentes.<br>
-      Toque na tela para despertar a atmosfera.
-    </p>
-    
-    <!-- Se quiser um botão temporário de "ativar som" (opcional, some depois) -->
-    <button id="unlock-sound" style="margin-top: 2rem; padding: 1rem 2rem; font-size: 1.2rem; background: #c70039; color: #000; border: none; border-radius: 8px; cursor: pointer;">
-      🩸 Entrar na atmosfera sombria
-    </button>
+
+    <p>Existia uma cidade chamada Aurora, na Europa, pequena e de pessoas muito devotas ao cristianismo. Durante o século VII, a cidade foi visitada por um anjo, que já havia passado pela cidade antes. Esse anjo era chamado de <strong>Serafim Vermelho.</strong></p>
+
+    <p>Uma jovem da cidade afirmava que tinha tido contato com esse anjo, e graças a um acordo realizado com ele, poderia realizar milagres. Ela conseguiria curar doenças apenas com seu toque e fazer lindas orquídeas vermelhas crescerem dos seus corpos agora saudáveis, marcando aqueles que foram abençoados.</p>
+
+    <p>Sete casos desse milagre foram registrados na cidade de Aurora. Com o passar dos anos, a cidade passou a cultuar a mulher que ficou conhecida como a "<strong>Santa das Flores</strong>".</p>
+
+    <p>Essa história começou a ficar cada vez mais popular, até o ponto que a influência ultrapassou as barreiras da cidade. Pessoas de diversas vilas européias na região ouviam falar da Santa das Flores e viajavam para Aurora em busca de sua fé, nunca voltando para suas vidas anteriores.</p>
+
+    <p>Com o passar dos anos, um culto nasceu ao redor da lenda da Santa das Flores. Eles adotaram o símbolo da <strong>Orquídea Vermelha</strong> e seus números só aumentaram. Eles passaram a acreditar que a Santa era, na verdade, uma manifestação do próprio <strong>Serafim Vermelho</strong>, e começaram a realizar ritos de invocação.</p>
+
+    <p>No começo, seus rituais eram desorganizados e pequenos, mas em questão meses eles já tinham convertidos o suficiente para sua causa. Buscando a conexão com a Santa das Flores, <strong>sete corpos</strong> eram sacrificados com sementes de orquídeas implantadas neles.</p>
+
+    <!-- Se quiser adicionar mais partes da história ou imagens aqui, é só colar -->
   </div>
 
+  <!-- Script pra liberar o áudio no primeiro toque/clique -->
   <script>
     const audio = document.getElementById('bg-music');
-    const unlockBtn = document.getElementById('unlock-sound');
 
-    // Função que libera e toca o áudio
     function unlockAndPlay() {
-      audio.muted = false;          // tira o mute
-      audio.volume = 0.25;          // volume baixo pra não assustar (ajuste se quiser)
+      audio.muted = false;
+      audio.volume = 0.25; // volume suave, ajuste se quiser mais alto/baixo
       
       audio.play()
         .then(() => {
           console.log("🩸 Atmosfera ativada!");
-          if (unlockBtn) unlockBtn.style.display = 'none'; // esconde botão se existir
         })
         .catch(err => {
-          console.log("Erro ao tocar (esperando mais interação):", err);
+          console.log("Erro (esperando mais interação):", err);
         });
 
       // Remove listeners pra não repetir
@@ -86,18 +90,12 @@
       document.removeEventListener('touchend', unlockAndPlay);
     }
 
-    // Escuta clique (desktop) e touchend (mobile - mais confiável no iOS)
+    // Eventos pra desktop e mobile
     document.addEventListener('click', unlockAndPlay);
     document.addEventListener('touchend', unlockAndPlay);
 
-    // Se tiver botão extra, ele também chama a função
-    if (unlockBtn) {
-      unlockBtn.addEventListener('click', unlockAndPlay);
-      unlockBtn.addEventListener('touchend', unlockAndPlay);
-    }
-
-    // Tenta tocar mudo logo no load (pra pré-carregar o áudio)
-    audio.play().catch(() => {}); 
+    // Pré-carrega mudo no load
+    audio.play().catch(() => {});
   </script>
 
 </body>
