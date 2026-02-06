@@ -5,81 +5,105 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sanguis Orchid</title>
   
+  <!-- Fonte elegante via Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+  
   <style>
     body {
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background: linear-gradient(to bottom, #1a0005, #000000, #0d0003); /* gradiente vermelho-escuro pra não ficar preto puro */
-      color: #f0e0e0; /* off-white suave, mais legível */
-      font-family: 'Georgia', serif;
-      line-height: 1.7;
-      overflow-x: hidden;
-      position: relative;
+      background: linear-gradient(to bottom, #120005, #000000, #0a0003);
+      color: #f5e0e0;
+      font-family: 'Playfair Display', serif;
+      line-height: 1.8;
+      overflow: hidden;
     }
-    .container {
-      max-width: 820px;
-      margin: 4rem auto 2rem;
-      padding: 2.5rem;
-      background: rgba(20, 0, 10, 0.65); /* semi-transparente vermelho-escuro */
-      backdrop-filter: blur(8px); /* efeito glass, se o browser suportar */
-      -webkit-backdrop-filter: blur(8px);
-      border: 1px solid rgba(199, 0, 57, 0.2);
-      border-radius: 16px;
-      box-shadow: 0 8px 32px rgba(199, 0, 57, 0.15);
-      text-align: justify;
-    }
-    h1, h2 {
-      color: #c70039; /* vermelho sangue principal */
-      text-align: center;
-      text-shadow: 0 0 15px rgba(199, 0, 57, 0.6);
-      margin-bottom: 1.5rem;
-    }
-    p {
-      font-size: 1.18rem;
-      margin: 1.4rem 0;
-    }
-    strong {
-      color: #ff3366;
-      font-weight: bold;
-    }
-    /* Overlay guia pro mobile */
-    #unlock-overlay {
+    #intro-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.4);
+      background: url('https://images.stockcake.com/public/1/8/0/180185c0-c84a-4b33-959f-5478b9c3b350/crimson-gothic-bloom-stockcake.jpg') no-repeat center center/cover;
       display: flex;
       align-items: center;
       justify-content: center;
+      flex-direction: column;
       color: #fff;
-      font-size: 1.4rem;
-      text-shadow: 0 0 10px #c70039;
-      z-index: 999;
-      pointer-events: none; /* permite cliques passarem */
-      transition: opacity 1s ease;
+      text-align: center;
+      z-index: 1000;
+      transition: opacity 1.2s ease, visibility 1.2s ease;
+      cursor: pointer;
     }
-    #unlock-overlay.hidden {
+    #intro-overlay.hidden {
       opacity: 0;
-      pointer-events: none;
+      visibility: hidden;
+    }
+    #intro-overlay h1 {
+      font-family: 'Cinzel', serif;
+      font-size: 4.5rem;
+      margin: 0;
+      text-shadow: 0 0 30px #c70039, 0 0 60px #8b0000;
+      color: #c70039;
+    }
+    #intro-overlay p {
+      font-size: 1.8rem;
+      margin: 1.5rem 0;
+      text-shadow: 0 0 15px #000;
+    }
+    #content {
+      max-width: 900px;
+      margin: 4rem auto;
+      padding: 2rem;
+      background: rgba(10, 0, 5, 0.75);
+      backdrop-filter: blur(10px);
+      border-radius: 16px;
+      border: 1px solid rgba(199, 0, 57, 0.25);
+      box-shadow: 0 0 40px rgba(199, 0, 57, 0.2);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 1.5s ease, transform 1.5s ease;
+    }
+    #content.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    h2 {
+      font-family: 'Cinzel', serif;
+      color: #c70039;
+      text-align: center;
+      font-size: 3rem;
+      text-shadow: 0 0 20px #c70039;
+      margin-bottom: 2rem;
+    }
+    p {
+      font-size: 1.3rem;
+      margin: 1.6rem 0;
+      text-align: justify;
+    }
+    strong {
+      color: #c70039;
+      font-weight: bold;
+    }
+    /* Áudio hidden */
+    audio {
+      display: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Áudio: tenta autoplay muted, libera som no primeiro gesto -->
-  <audio id="bg-music" loop preload="auto" muted playsinline>
-    <source src="/audio/sanguis-background.mp3" type="audio/mpeg">
-    Seu navegador não suporta áudio.
-  </audio>
-
-  <!-- Overlay guia (some no primeiro toque/clique) -->
-  <div id="unlock-overlay">Toque na tela para despertar a atmosfera 🩸</div>
-
-  <div class="container">
+  <!-- Pop-up full-screen inicial -->
+  <div id="intro-overlay">
     <h1>Sanguis Orchid</h1>
+    <p>Toque ou clique em qualquer lugar para entrar na atmosfera 🩸</p>
+  </div>
+
+  <!-- Conteúdo da história (escondido até interação) -->
+  <div id="content">
     <h2>SANGUIS ORCHID</h2>
 
-    <p>Existia uma cidade chamada Aurora, na Europa, pequena e de pessoas muito devotas ao cristianismo. Durante o século VII, a cidade foi visitada por um anjo, que já havia passado pela cidade antes. Esse anjo era chamado de <strong>Serafim Vermelho.</strong></p>
+    <p>Existia uma cidade chamada Aurora, na Europa, pequena e de pessoas muito devotas ao cristianismo. Durante o século VII, a cidade foi visitada por um anjo, que já havia passado pela cidade antes. Esse anjo era chamado de <strong>Serafim Vermelho</strong>.</p>
 
     <p>Uma jovem da cidade afirmava que tinha tido contato com esse anjo, e graças a um acordo realizado com ele, poderia realizar milagres. Ela conseguiria curar doenças apenas com seu toque e fazer lindas orquídeas vermelhas crescerem dos seus corpos agora saudáveis, marcando aqueles que foram abençoados.</p>
 
@@ -89,42 +113,40 @@
 
     <p>Com o passar dos anos, um culto nasceu ao redor da lenda da Santa das Flores. Eles adotaram o símbolo da <strong>Orquídea Vermelha</strong> e seus números só aumentaram. Eles passaram a acreditar que a Santa era, na verdade, uma manifestação do próprio <strong>Serafim Vermelho</strong>, e começaram a realizar ritos de invocação.</p>
 
-    <p>No começo, seus rituais eram desorganizados e pequenos, mas em questão meses eles já tinham convertidos o suficiente para sua causa. Buscando a conexão com a Santa das Flores, <strong>sete corpos</strong> eram sacrificados com sementes de orquídeas implantadas neles.</p>
+    <p>No começo, seus rituais eram desorganizados e pequenos, mas em questão de meses eles já tinham convertidos o suficiente para sua causa. Buscando a conexão com a Santa das Flores, <strong>sete corpos</strong> eram sacrificados com sementes de orquídeas implantadas neles.</p>
   </div>
 
+  <!-- Áudio de fundo -->
+  <audio id="bg-music" loop preload="auto" muted playsinline>
+    <source src="/audio/sanguis-background.mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
   <script>
+    const overlay = document.getElementById('intro-overlay');
+    const content = document.getElementById('content');
     const audio = document.getElementById('bg-music');
-    const overlay = document.getElementById('unlock-overlay');
 
-    // Tenta tocar muted + autoplay logo no load (funciona em desktop e alguns mobiles)
-    audio.play().catch(() => { console.log("Autoplay muted bloqueado, esperando gesto"); });
+    function enterAtmosphere() {
+      overlay.classList.add('hidden');
+      content.classList.add('visible');
 
-    function unlockAudio() {
+      // Libera som
       audio.muted = false;
-      audio.volume = 0.22; // suave pra não assustar
-      audio.play()
-        .then(() => {
-          console.log("🩸 Som liberado!");
-          if (overlay) overlay.classList.add('hidden');
-        })
-        .catch(err => console.log("Erro final:", err));
+      audio.volume = 0.25;
+      audio.play().catch(err => console.log("Som liberado após interação:", err));
 
       // Remove listeners
-      document.removeEventListener('click', unlockAudio);
-      document.removeEventListener('touchend', unlockAudio);
+      document.removeEventListener('click', enterAtmosphere);
+      document.removeEventListener('touchend', enterAtmosphere);
     }
 
-    // Escuta gestos (click desktop + touchend mobile - mais confiável no iOS)
-    document.addEventListener('click', unlockAudio);
-    document.addEventListener('touchend', unlockAudio);
+    // Tenta autoplay muted no load (pra pré-carregar)
+    audio.play().catch(() => {});
 
-    // Se quiser fade-in suave (opcional, descomente)
-    // audio.volume = 0;
-    // let vol = 0;
-    // const fade = setInterval(() => {
-    //   if (vol < 0.22) { vol += 0.01; audio.volume = vol; }
-    //   else clearInterval(fade);
-    // }, 200);
+    // Escuta clique/toque no overlay (ou qualquer lugar)
+    document.addEventListener('click', enterAtmosphere);
+    document.addEventListener('touchend', enterAtmosphere);
   </script>
 
 </body>
