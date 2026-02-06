@@ -16,13 +16,13 @@ export interface TerminalConfig {
 export const terminalConfig: TerminalConfig = {
   banner: `
                                                                       
- mmmm   mmmmmm          mmm                  m                        
- #   "m     #"        m"   "  mmm   m mm   mm#mm   mmm    m mm        
- #    #   m#          #      #"  #  #"  #    #    #"  #   #"  "       
- #    #  m"           #      #""""  #   #    #    #""""   #           
- #mmm"  ##mmmm         "mmm" "#mm"  #   #    "mm  "#mm"   #           
                                                                       
-                                                                                    
+ ▄▄▄▄   ▄▄▄▄▄▄          ▄▄▄                  ▄                        
+ █   ▀▄     █▀        ▄▀   ▀  ▄▄▄   ▄ ▄▄   ▄▄█▄▄   ▄▄▄    ▄ ▄▄        
+ █    █   ▄█          █      █▀  █  █▀  █    █    █▀  █   █▀  ▀       
+ █    █  ▄▀           █      █▀▀▀▀  █   █    █    █▀▀▀▀   █           
+ █▄▄▄▀  ██▄▄▄▄         ▀▄▄▄▀ ▀█▄▄▀  █   █    ▀▄▄  ▀█▄▄▀   █           
+                                                                                                                            
                                                                                                                                                                       
 `,
   prompt: "dozamigos@visitante:~$",
