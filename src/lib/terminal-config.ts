@@ -19,6 +19,7 @@ export const terminalConfig: TerminalConfig = {
  |   \_  /    / __|_ _|_   _| __|
  | |) / /     \__ \| |  | | | _| 
  |___/___|    |___/___| |_| |___|                  
+
                                                                                                                                                                       
 `,
   prompt: "dozamigos@visitante:~$",
