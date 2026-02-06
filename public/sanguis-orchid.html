@@ -5,54 +5,79 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sanguis Orchid</title>
   
-  <!-- Estilos básicos pra manter a vibe sombria (ajuste conforme o seu original) -->
   <style>
     body {
       margin: 0;
       padding: 0;
       min-height: 100vh;
-      background: #0a0005 url('seu-fundo-aqui.jpg') no-repeat center center fixed; /* adicione imagem de fundo se tiver */
-      background-size: cover;
-      color: #c70039; /* vermelho sangue */
-      font-family: 'Georgia', serif; /* ou a fonte que você usava */
-      line-height: 1.6;
+      background: linear-gradient(to bottom, #1a0005, #000000, #0d0003); /* gradiente vermelho-escuro pra não ficar preto puro */
+      color: #f0e0e0; /* off-white suave, mais legível */
+      font-family: 'Georgia', serif;
+      line-height: 1.7;
       overflow-x: hidden;
+      position: relative;
     }
     .container {
-      max-width: 800px;
-      margin: 5rem auto;
-      padding: 2rem;
-      background: rgba(0, 0, 0, 0.6);
-      border-radius: 12px;
-      box-shadow: 0 0 30px rgba(199, 0, 57, 0.3);
+      max-width: 820px;
+      margin: 4rem auto 2rem;
+      padding: 2.5rem;
+      background: rgba(20, 0, 10, 0.65); /* semi-transparente vermelho-escuro */
+      backdrop-filter: blur(8px); /* efeito glass, se o browser suportar */
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(199, 0, 57, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(199, 0, 57, 0.15);
       text-align: justify;
     }
-    h1 {
+    h1, h2 {
+      color: #c70039; /* vermelho sangue principal */
       text-align: center;
-      font-size: 3.5rem;
-      text-shadow: 0 0 20px #c70039;
-      margin-bottom: 2rem;
+      text-shadow: 0 0 15px rgba(199, 0, 57, 0.6);
+      margin-bottom: 1.5rem;
     }
     p {
-      margin-bottom: 1.5rem;
-      font-size: 1.2rem;
+      font-size: 1.18rem;
+      margin: 1.4rem 0;
     }
     strong {
       color: #ff3366;
+      font-weight: bold;
+    }
+    /* Overlay guia pro mobile */
+    #unlock-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.4rem;
+      text-shadow: 0 0 10px #c70039;
+      z-index: 999;
+      pointer-events: none; /* permite cliques passarem */
+      transition: opacity 1s ease;
+    }
+    #unlock-overlay.hidden {
+      opacity: 0;
+      pointer-events: none;
     }
   </style>
 </head>
 <body>
 
-  <!-- Áudio de fundo (o mesmo de antes, compatível com mobile/desktop) -->
-  <audio id="bg-music" loop preload="auto" muted>
+  <!-- Áudio: tenta autoplay muted, libera som no primeiro gesto -->
+  <audio id="bg-music" loop preload="auto" muted playsinline>
     <source src="/audio/sanguis-background.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
   </audio>
 
-  <!-- Seu textinho da história completo -->
+  <!-- Overlay guia (some no primeiro toque/clique) -->
+  <div id="unlock-overlay">Toque na tela para despertar a atmosfera 🩸</div>
+
   <div class="container">
     <h1>Sanguis Orchid</h1>
+    <h2>SANGUIS ORCHID</h2>
 
     <p>Existia uma cidade chamada Aurora, na Europa, pequena e de pessoas muito devotas ao cristianismo. Durante o século VII, a cidade foi visitada por um anjo, que já havia passado pela cidade antes. Esse anjo era chamado de <strong>Serafim Vermelho.</strong></p>
 
@@ -65,37 +90,41 @@
     <p>Com o passar dos anos, um culto nasceu ao redor da lenda da Santa das Flores. Eles adotaram o símbolo da <strong>Orquídea Vermelha</strong> e seus números só aumentaram. Eles passaram a acreditar que a Santa era, na verdade, uma manifestação do próprio <strong>Serafim Vermelho</strong>, e começaram a realizar ritos de invocação.</p>
 
     <p>No começo, seus rituais eram desorganizados e pequenos, mas em questão meses eles já tinham convertidos o suficiente para sua causa. Buscando a conexão com a Santa das Flores, <strong>sete corpos</strong> eram sacrificados com sementes de orquídeas implantadas neles.</p>
-
-    <!-- Se quiser adicionar mais partes da história ou imagens aqui, é só colar -->
   </div>
 
-  <!-- Script pra liberar o áudio no primeiro toque/clique -->
   <script>
     const audio = document.getElementById('bg-music');
+    const overlay = document.getElementById('unlock-overlay');
 
-    function unlockAndPlay() {
+    // Tenta tocar muted + autoplay logo no load (funciona em desktop e alguns mobiles)
+    audio.play().catch(() => { console.log("Autoplay muted bloqueado, esperando gesto"); });
+
+    function unlockAudio() {
       audio.muted = false;
-      audio.volume = 0.25; // volume suave, ajuste se quiser mais alto/baixo
-      
+      audio.volume = 0.22; // suave pra não assustar
       audio.play()
         .then(() => {
-          console.log("🩸 Atmosfera ativada!");
+          console.log("🩸 Som liberado!");
+          if (overlay) overlay.classList.add('hidden');
         })
-        .catch(err => {
-          console.log("Erro (esperando mais interação):", err);
-        });
+        .catch(err => console.log("Erro final:", err));
 
-      // Remove listeners pra não repetir
-      document.removeEventListener('click', unlockAndPlay);
-      document.removeEventListener('touchend', unlockAndPlay);
+      // Remove listeners
+      document.removeEventListener('click', unlockAudio);
+      document.removeEventListener('touchend', unlockAudio);
     }
 
-    // Eventos pra desktop e mobile
-    document.addEventListener('click', unlockAndPlay);
-    document.addEventListener('touchend', unlockAndPlay);
+    // Escuta gestos (click desktop + touchend mobile - mais confiável no iOS)
+    document.addEventListener('click', unlockAudio);
+    document.addEventListener('touchend', unlockAudio);
 
-    // Pré-carrega mudo no load
-    audio.play().catch(() => {});
+    // Se quiser fade-in suave (opcional, descomente)
+    // audio.volume = 0;
+    // let vol = 0;
+    // const fade = setInterval(() => {
+    //   if (vol < 0.22) { vol += 0.01; audio.volume = vol; }
+    //   else clearInterval(fade);
+    // }, 200);
   </script>
 
 </body>
