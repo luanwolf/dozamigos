@@ -5,21 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Sanguis Orchid</title>
   
-  <!-- Fonte elegante via Google Fonts -->
+  <!-- Fonte elegante -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;700&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
   
   <style>
+    html {
+      height: auto; /* permite expansão */
+    }
     body {
       margin: 0;
       padding: 0;
-      min-height: 100vh;
       background: linear-gradient(to bottom, #120005, #000000, #0a0003);
       color: #f5e0e0;
       font-family: 'Playfair Display', serif;
       line-height: 1.8;
-      overflow: hidden;
+      min-height: 100vh; /* mínimo tela cheia, mas permite mais */
+      overflow-y: auto; /* scroll vertical ativado */
+      -webkit-overflow-scrolling: touch; /* smooth scroll no iOS */
     }
     #intro-overlay {
       position: fixed;
@@ -53,7 +57,7 @@
     }
     #content {
       max-width: 900px;
-      margin: 4rem auto;
+      margin: 4rem auto 6rem; /* espaço embaixo pra não cortar */
       padding: 2rem;
       background: rgba(10, 0, 5, 0.75);
       backdrop-filter: blur(10px);
@@ -85,7 +89,6 @@
       color: #c70039;
       font-weight: bold;
     }
-    /* Áudio hidden */
     audio {
       display: none;
     }
@@ -93,15 +96,15 @@
 </head>
 <body>
 
-  <!-- Pop-up full-screen inicial -->
+  <!-- Pop-up full-screen -->
   <div id="intro-overlay">
-    <h1>Sanguis Orchid</h1>
-    <p>Toque ou clique em qualquer lugar para entrar na atmosfera 🩸</p>
+    <h1>Você tem certeza?</h1>
+    <p>Clique ou toque em qualquer lugar 🌸</p>
   </div>
 
-  <!-- Conteúdo da história (escondido até interação) -->
+  <!-- Conteúdo da história -->
   <div id="content">
-    <h2>SANGUIS ORCHID</h2>
+    <h2>Sanguis Orchid</h2>
 
     <p>Existia uma cidade chamada Aurora, na Europa, pequena e de pessoas muito devotas ao cristianismo. Durante o século VII, a cidade foi visitada por um anjo, que já havia passado pela cidade antes. Esse anjo era chamado de <strong>Serafim Vermelho</strong>.</p>
 
@@ -116,7 +119,7 @@
     <p>No começo, seus rituais eram desorganizados e pequenos, mas em questão de meses eles já tinham convertidos o suficiente para sua causa. Buscando a conexão com a Santa das Flores, <strong>sete corpos</strong> eram sacrificados com sementes de orquídeas implantadas neles.</p>
   </div>
 
-  <!-- Áudio de fundo -->
+  <!-- Áudio -->
   <audio id="bg-music" loop preload="auto" muted playsinline>
     <source src="/audio/sanguis-background.mp3" type="audio/mpeg">
     Seu navegador não suporta áudio.
@@ -131,20 +134,16 @@
       overlay.classList.add('hidden');
       content.classList.add('visible');
 
-      // Libera som
       audio.muted = false;
       audio.volume = 0.25;
-      audio.play().catch(err => console.log("Som liberado após interação:", err));
+      audio.play().catch(err => console.log("Som liberado:", err));
 
-      // Remove listeners
       document.removeEventListener('click', enterAtmosphere);
       document.removeEventListener('touchend', enterAtmosphere);
     }
 
-    // Tenta autoplay muted no load (pra pré-carregar)
     audio.play().catch(() => {});
 
-    // Escuta clique/toque no overlay (ou qualquer lugar)
     document.addEventListener('click', enterAtmosphere);
     document.addEventListener('touchend', enterAtmosphere);
   </script>
